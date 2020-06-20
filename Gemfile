@@ -5,6 +5,8 @@ gemspec
 
 gem "rake", "~> 12.0"
 
-ruby
-gem 'top_tech_cities'
+gem 'colorize'
+
+gem 'nokogiri', '1.10.8'
+
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/top_tech_cities'
 require_relative '../lib/top_tech_cities/Cli.rb'
+require_relative '../lib/top_tech_cities/scraper.rb'
 
 TopTechCities::Cli.new.welcome

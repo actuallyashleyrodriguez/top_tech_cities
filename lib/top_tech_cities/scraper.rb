@@ -12,6 +12,22 @@ class TopTechCities::Scraper
       cities
   end
 
-  def self.scrape_salaries
+  def self.scrape_city_info
+    website = Nokogiri::HTML(open("https://www.indeed.com/career-advice/finding-a-job/best-city-for-software-engineers"))
+    salaries = []
+    salary_info = website.css ("p a")
+    salary_info.each do |dollars|
+        if dollars.text.include?("$")
+            salaries << dollars.text
+        end
+      end
+      binding.pry
+      companies =[]
+      company_info = website.css ("p a")
+      company_info.each do |cmp|
+        if cmp.attribute("href").value.include?("cmp")
+            companies << cmp.text
+        end
+      end
   end
 end

@@ -10,6 +10,6 @@ class TopTechCities::Cli
         #cities_information (about, salary,jobs)
         #decide action
         #prints action
-        TopTechCities::Scraper.scrape_city_name
+        TopTechCities::Scraper.scrape_city_info
     end
 end

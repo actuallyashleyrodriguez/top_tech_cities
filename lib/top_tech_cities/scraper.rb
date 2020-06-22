@@ -21,7 +21,7 @@ class TopTechCities::Scraper
             salaries << dollars.text
         end
       end
-      binding.pry
+      puts "#{salaries.drop(1)}".colorize(:cyan)
       companies =[]
       company_info = website.css ("p a")
       company_info.each do |cmp|
@@ -29,5 +29,6 @@ class TopTechCities::Scraper
             companies << cmp.text
         end
       end
+      puts "#{companies}".colorize(:yellow)
   end
 end

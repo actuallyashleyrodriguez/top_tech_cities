@@ -29,6 +29,8 @@ class TopTechCities::Scraper
             companies << cmp.text
         end
       end
-      puts "#{companies}".colorize(:yellow)
+      nested_array = [] 
+      companies.each_slice(3) {|n| nested_array << n}
+      puts "#{nested_array}".colorize(:yellow)
   end
 end

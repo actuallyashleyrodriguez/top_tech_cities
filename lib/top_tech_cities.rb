@@ -1,6 +1,7 @@
 require_relative "top_tech_cities/version"
 require_relative "top_tech_cities/Cli"
 require_relative "top_tech_cities/scraper"
+require_relative "top_tech_cities/city"
 
 require 'pry'
 require 'nokogiri'

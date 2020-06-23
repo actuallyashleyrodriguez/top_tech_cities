@@ -6,7 +6,7 @@ class TopTechCities::Scraper
     city_name = website.css("h3 a")
      city_name.each do |city|
         if city.text.include?(",")
-         puts city.text
+            cities << city.text
       end
       end
       cities

@@ -8,8 +8,6 @@ class TopTechCities::Cli
         top_cities
         get_city
         #get_input
-        #cities_information_menu(salary,companies)
-        #get_input
         #prints_action
         #until exit
     end

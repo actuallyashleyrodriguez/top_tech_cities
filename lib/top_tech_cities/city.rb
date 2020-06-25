@@ -16,5 +16,9 @@ class TopTechCities::City
         end
     end
 
+    def self.salaries
+        TopTechCities::Scraper.salary_scraped
+    end
+
    
 end

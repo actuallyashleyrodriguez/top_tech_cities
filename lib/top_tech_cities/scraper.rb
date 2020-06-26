@@ -7,7 +7,7 @@ class TopTechCities::Scraper
     city_name = website.css("h3 a")
      city_name.each do |city|
         if city.text.include?(",")
-            cities << city.text ## get this to instead be added to City class as a new instance
+            cities << city.text ## how to get this to read City.new(city.text)
       end
       end
       cities
@@ -28,14 +28,14 @@ class TopTechCities::Scraper
 #iterates through the companies and inserts them in a nested array 3 per city
     def self.company_scraped
         website = Nokogiri::HTML(open("https://www.indeed.com/career-advice/finding-a-job/best-city-for-software-engineers"))
-      companies =[]
+      companies =[] #hash instead?
       company_info = website.css ("p a")
       company_info.each do |cmp|
         if cmp.attribute("href").value.include?("cmp")
            companies << cmp.text 
         end
       end
-      nested_array = [] 
+      nested_array = [] #hash instead?
       companies.each_slice(3) {|n| nested_array << n}
       nested_array #how to iterate through the nested array and make every three related to a City
   end

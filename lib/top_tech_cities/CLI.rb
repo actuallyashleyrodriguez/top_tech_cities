@@ -4,8 +4,10 @@ class TopTechCities::Cli
     
     def welcome
         puts "\nWelcome to Top Tech Cities! This is a list of the Top cities hiring Tech careers.".green
+        #unless exit_app == true
         top_cities
         get_city
+        #end 
     end
 
     def top_cities
@@ -22,15 +24,15 @@ class TopTechCities::Cli
         city_menu
         case gets.strip
         when "1"
-            puts "\nThe Average Salary for #{city_select} is\n".colorize(:cyan)
-            puts "#{TopTechCities::City.salaries[select_city - 1]}\n".colorize(:yellow)
+            puts "\nThe Average Salary for #{city_select} is\n".colorize(:green)
+            puts "#{TopTechCities::City.salaries[select_city - 1]}\n".colorize(:green)
         when "2"
             puts "\nThe Top 3 companies hiring for #{city_select} are\n".cyan
             puts "#{TopTechCities::City.top_companies[select_city - 1]}\n".colorize(:yellow)
         when "3"
             top_cities
         else
-            puts "That's not a valid input!".red
+            puts "\nThat's not a valid input!\n".red
         end
         #recursion. how?
     end
@@ -43,6 +45,8 @@ class TopTechCities::Cli
     end
 
     def exit_app
+    if gets.strip == "e" || gets.strip == "exit" #also doesnt work in get_city
         puts "Happy Job Hunting!".green
+    end
     end
 end

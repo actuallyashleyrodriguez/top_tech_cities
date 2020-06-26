@@ -20,5 +20,8 @@ class TopTechCities::City
         TopTechCities::Scraper.salary_scraped
     end
 
+    def self.top_companies
+        TopTechCities::Scraper.company_scraped
+    end
    
 end

@@ -25,6 +25,7 @@ class TopTechCities::Scraper
     end
 
     def self.company_scraped
+        website = Nokogiri::HTML(open("https://www.indeed.com/career-advice/finding-a-job/best-city-for-software-engineers"))
       companies =[]
       company_info = website.css ("p a")
       company_info.each do |cmp|
@@ -34,6 +35,6 @@ class TopTechCities::Scraper
       end
       nested_array = [] 
       companies.each_slice(3) {|n| nested_array << n}
-      puts "#{nested_array}".colorize(:yellow)
+      nested_array
   end
 end

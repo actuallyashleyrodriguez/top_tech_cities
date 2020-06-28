@@ -3,13 +3,11 @@
 class TopTechCities::Cli
     
     def run_app
-        if gets.strip != "exit"
+        #while gets.strip != "exit"
         puts "\nWelcome to Top Tech Cities! This is a list of the Top cities hiring Tech careers.".green
-        puts top_cities
-        puts get_city
-        else
-            exit_app
-        end
+        top_cities
+        get_city
+        #end
     end
 
     def top_cities
@@ -19,33 +17,41 @@ class TopTechCities::Cli
     end
 
     def get_city
-        #until gets.strip == "e" || "exit"
+        #while gets.strip != "e" || gets.strip != "exit"
         select_city = gets.strip.to_i
         city_select = TopTechCities::City.all[select_city - 1]
-        puts "\nChoose your option below for #{city_select}\n".cyan
-        city_menu
-        case gets.strip
-        when "1"
-            puts "\nThe Average Salary for #{city_select} is\n".colorize(:green)
-            puts "#{TopTechCities::City.salaries[select_city - 1]}\n".colorize(:green)
-        when "2"
-            puts "\nThe Top 3 companies hiring for #{city_select} are\n".cyan
-            puts "#{TopTechCities::City.top_companies[select_city - 1]}\n".colorize(:yellow)
-        when "3"
-            top_cities
+        if valid_input(select_city)
+            puts "\nChoose your option below for #{city_select}\n".cyan
+            city_menu
+            case gets.strip
+            when "1"
+                puts "\nThe Average Salary for #{city_select} is\n".colorize(:green)
+                puts "#{TopTechCities::City.salaries[select_city - 1]}\n".colorize(:green)
+            when "2"
+                puts "\nThe Top 3 companies hiring for #{city_select} are\n".cyan
+                puts "#{TopTechCities::City.top_companies[select_city - 1]}\n".colorize(:yellow)
+            when "3"
+                top_cities
+            else
+                puts "\nThat's not a valid input!\n".red
+            end
         else
             puts "\nThat's not a valid input!\n".red
         end
-        #recursion. how?
+        exit_app
     end
+    end
+
+    #nd
+        
 
     def user_input
         gets.strip
     end
 
 
-    def valid_input
-        validate get_city
+    def valid_input(input)
+        input <= TopTechCities::City.all.length && input = 0
     end
 
     def city_menu

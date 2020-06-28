@@ -2,24 +2,26 @@
 
 class TopTechCities::Cli
     
-    def welcome
+    def run_app
+        if gets.strip != "exit"
         puts "\nWelcome to Top Tech Cities! This is a list of the Top cities hiring Tech careers.".green
-        #unless exit_app == true
-        top_cities
-        get_city
-        #end 
+        puts top_cities
+        puts get_city
+        else
+            exit_app
+        end
     end
 
     def top_cities
-        puts "Enter the number of the city that you're interested in learning more about.\n".green
-        @cities = TopTechCities::City.create_from_scrape.map.with_index(1) {|c, idx| p "#{idx}. #{c}"}
+        puts "Enter the number of the city that you're interested in learning more about.\n".green 
+        @cities = TopTechCities::City.all.map.with_index(1) {|c, idx| p "#{idx}. #{c.name}"}
         puts "\n Type 'exit' to exit the app\n".red
     end
 
     def get_city
         #until gets.strip == "e" || "exit"
         select_city = gets.strip.to_i
-        city_select = TopTechCities::City.create_from_scrape[select_city - 1]
+        city_select = TopTechCities::City.all[select_city - 1]
         puts "\nChoose your option below for #{city_select}\n".cyan
         city_menu
         case gets.strip
@@ -37,6 +39,15 @@ class TopTechCities::Cli
         #recursion. how?
     end
 
+    def user_input
+        gets.strip
+    end
+
+
+    def valid_input
+        validate get_city
+    end
+
     def city_menu
         puts "\n1. Average Salary".colorize(:light_magenta)
         puts "2. Top 3 Companies Hiring".colorize(:light_magenta)
@@ -45,8 +56,6 @@ class TopTechCities::Cli
     end
 
     def exit_app
-    if gets.strip == "e" || gets.strip == "exit" #also doesnt work in get_city
         puts "Happy Job Hunting!".green
-    end
     end
 end

@@ -7,7 +7,8 @@ class TopTechCities::City
     end
 
     def self.all
-        @@all 
+        TopTechCities::Scraper.scrape_city_name if @@all.empty?
+        @@all
     end
 
     def self.create_from_scrape #can i put this in the scraper class?

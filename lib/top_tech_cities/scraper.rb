@@ -7,10 +7,9 @@ class TopTechCities::Scraper
     city_name = website.css("h3 a")
      city_name.each do |city|
         if city.text.include?(",")
-            cities << city.text ## how to get this to read City.new(city.text)
+           TopTechCities::City.new(city.text)  
       end
-      end
-      cities
+    end
   end
 
   #iterates through the salaries and removes the first one which isnt linked to a city

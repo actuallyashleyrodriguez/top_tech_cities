@@ -17,12 +17,12 @@ class TopTechCities::City
         #end
    # end
 
-    def self.salaries #want the salaries to be #{city}.salary
-        TopTechCities::Scraper.salary_scraped
+    def self.salaries 
+       @salary = TopTechCities::Scraper.salary_scraped
     end
 
-    def self.top_companies #how can I print this so it isn't an a array, but more of a list without printing all companies
-        TopTechCities::Scraper.company_scraped
+    def self.top_companies 
+        @companies_hiring = TopTechCities::Scraper.company_scraped
     end
    
 end

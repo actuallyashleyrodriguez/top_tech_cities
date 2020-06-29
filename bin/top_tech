@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 require_relative '../lib/top_tech_cities'
 require_relative '../lib/top_tech_cities/Cli.rb'
-#require_relative '../lib/top_tech_cities/scraper.rb'
+#require_relative '../lib/top_tech_cities/city.rb'
 
 TopTechCities::Cli.new.run_app
 
-#TopTechCities::Scraper.company_scraped

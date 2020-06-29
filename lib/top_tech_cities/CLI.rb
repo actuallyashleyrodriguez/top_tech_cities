@@ -3,7 +3,6 @@
 class TopTechCities::Cli
     
     def run_app
-        #while gets.strip != "exit"
         puts "\nWelcome to Top Tech Cities! This is a list of the Top cities hiring Tech careers.".green
         top_cities
         get_city
@@ -13,40 +12,37 @@ class TopTechCities::Cli
     def top_cities
         puts "Enter the number of the city that you're interested in learning more about.\n".green 
         @cities = TopTechCities::City.all.map.with_index(1) {|c, idx| p "#{idx}. #{c.name}"}
-        puts "\n Type 'exit' to exit the app\n".red
     end
 
     def get_city
-        #while gets.strip != "e" || gets.strip != "exit"
         select_city = gets.strip.to_i
-        city_select = TopTechCities::City.all[select_city - 1]
+        city_select = TopTechCities::City.all[select_city - 1].name
         if valid_input(select_city)
-            puts "\nChoose your option below for #{city_select}\n".cyan
+            puts "\nChoose your option below for #{city_select}\n".colorize(:light_magenta)
             city_menu
-            case gets.strip
+            case user_input
             when "1"
-                puts "\nThe Average Salary for #{city_select} is\n".colorize(:green)
-                puts "#{TopTechCities::City.salaries[select_city - 1]}\n".colorize(:green)
+                puts "\nThe Average Salary for #{city_select} is\n".colorize(:yellow)
+                puts "#{TopTechCities::City.salaries[select_city - 1]}\n".colorize(:yellow)
             when "2"
                 puts "\nThe Top 3 companies hiring for #{city_select} are\n".cyan
-                puts "#{TopTechCities::City.top_companies[select_city - 1]}\n".colorize(:yellow)
+                puts "#{TopTechCities::City.top_companies[select_city - 1]}\n".colorize(:cyan)
             when "3"
                 top_cities
+            when "exit"
+                exit_app
             else
                 puts "\nThat's not a valid input!\n".red
             end
         else
             puts "\nThat's not a valid input!\n".red
         end
-        exit_app
+        top_cities
+        get_city
     end
-    end
-
-    #nd
-        
 
     def user_input
-        gets.strip
+        gets.strip.downcase
     end
 
 
@@ -63,5 +59,6 @@ class TopTechCities::Cli
 
     def exit_app
         puts "Happy Job Hunting!".green
+        exit!
     end
 end

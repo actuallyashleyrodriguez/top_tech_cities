@@ -34,7 +34,7 @@ class TopTechCities::Scraper
            companies << cmp.text 
         end
       end
-      nested_array = [] #hash instead?
+      nested_array= []#hash instead?
       companies.each_slice(3) {|n| nested_array << n}
       nested_array #how to iterate through the nested array and make every three related to a City
   end

@@ -11,11 +11,11 @@ class TopTechCities::City
         @@all
     end
 
-    def self.create_from_scrape #can i put this in the scraper class?
-        TopTechCities::Scraper.scrape_city_name.each do |c|
-            self.new(c)
-        end
-    end
+    #def self.create_from_scrape
+       # TopTechCities::Scraper.scrape_city_name.each do |c|
+           # self.new(c)
+        #end
+   # end
 
     def self.salaries #want the salaries to be #{city}.salary
         TopTechCities::Scraper.salary_scraped

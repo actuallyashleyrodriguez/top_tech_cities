@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This Gem lists the top 10 cities that are hiring Tech jobs in 2020. Use this app to find out the top 10 cities, their average salaries for tech, and the top 3 companies hiring.
 
 ## Development
 

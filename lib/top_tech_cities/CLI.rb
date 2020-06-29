@@ -6,7 +6,6 @@ class TopTechCities::Cli
         puts "\nWelcome to Top Tech Cities! This is a list of the Top cities hiring Tech careers.".green
         top_cities
         get_city
-        #end
     end
 
     def top_cities
@@ -26,7 +25,9 @@ class TopTechCities::Cli
                 puts "#{TopTechCities::City.salaries[select_city - 1]}\n".colorize(:yellow)
             when "2"
                 puts "\nThe Top 3 companies hiring for #{city_select} are\n".cyan
-                puts "#{TopTechCities::City.top_companies[select_city - 1]}\n".colorize(:cyan)
+                puts "1. #{TopTechCities::City.top_companies[select_city - 1][0]}\n".colorize(:cyan)
+                puts "2. #{TopTechCities::City.top_companies[select_city - 1][1]}\n".colorize(:cyan)
+                puts "3. #{TopTechCities::City.top_companies[select_city - 1][2]}\n".colorize(:cyan)
             when "3"
                 top_cities
             when "exit"
@@ -37,8 +38,8 @@ class TopTechCities::Cli
         else
             puts "\nThat's not a valid input!\n".red
         end
-        top_cities
-        get_city
+        top_cities 
+        get_city 
     end
 
     def user_input

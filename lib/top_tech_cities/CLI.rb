@@ -29,7 +29,6 @@ class TopTechCities::Cli
                 puts "2. #{TopTechCities::City.top_companies[select_city - 1][1]}\n".colorize(:cyan)
                 puts "3. #{TopTechCities::City.top_companies[select_city - 1][2]}\n".colorize(:cyan)
             when "3"
-                top_cities
             when "exit"
                 exit_app
             else
